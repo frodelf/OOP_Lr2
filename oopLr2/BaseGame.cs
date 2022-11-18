@@ -4,10 +4,22 @@ namespace oopLr2
 {
     public abstract class BaseGame
     {
-        public static Random Random = new Random();
-        public string TipeGames;
-        public int Rating;
+        public string Type;
+        protected static Random Random = new Random();
 
-        public abstract void Game(Account account1, Account account2, string result);
+        public abstract int Game(Account account1, Account account2, Result result);
+
+        public enum Result
+        {
+            Win,
+            Lose,
+        }
+
+        protected enum TypeGame
+        {
+            Usually,
+            OneRating,
+            Train,
+        }
     }
 }

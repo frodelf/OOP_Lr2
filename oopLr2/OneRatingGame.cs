@@ -4,27 +4,22 @@
     {
         public OneRatingGame()
         {
-            TipeGames = "OneRating";
-            Rating = Random.Next(90, 110);
+            Type = TypeGame.OneRating.ToString();
         }
-        public override void Game(Account account1, Account account2, string result)
+        public override int Game(Account account1, Account account2, Result result)
         {
-            
-            if (result.Equals("Win"))
+            int rating = Random.Next(90, 110);
+
+            if (result == Result.Win)
             {
-                if (account2.Level.Equals("Usually")  ||  account2.Level.Equals("Easy"))
-                {
-                    account2.CurrentRating -= Rating;
-                }
-                else
-                {
-                    account2.CurrentRating -= 2*Rating;
-                }
+                account2.CurrentRating -= account2.RatingCoefficient*rating;
             }
             else
             {
-                account2.CurrentRating += Rating;
+                account2.CurrentRating += rating;
             }
+
+            return rating;
         }
     }
 }

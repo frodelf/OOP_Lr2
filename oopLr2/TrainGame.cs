@@ -2,14 +2,13 @@
 {
     public class TrainGame:BaseGame
     {
-        public TrainGame ()
+        public TrainGame()
         {
-            TipeGames = "Train";
-            Rating = Random.Next(90, 110);
+            Type = TypeGame.Train.ToString();
         }
-
-        public override void Game(Account account1, Account account2, string result)
-        {
+        public override int Game(Account account1, Account account2, Result result)
+        { 
+            return 0;
         }
     }
 }

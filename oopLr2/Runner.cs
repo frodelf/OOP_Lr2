@@ -2,42 +2,46 @@
 
 namespace oopLr2
 {
-    public class Runner
+    public static class Runner
     {
         static void Main()
         {
+            UsuallyGame usuallyGame = new UsuallyGame();
+            TrainGame trainGame = new TrainGame();
+            OneRatingGame oneRatingGame = new OneRatingGame();
+            
             var denis = new GameAccount("Denis");
             var artem = new GameAccount("Artem");
             
-            var stas = new HardAccount("Stas");
+            var ivan = new HardAccount("Ivan");
             var vlad = new HardAccount("Vlad");
 
             var sasha = new BonusAccount("Sasha");
             var boris = new BonusAccount("Boris");
 
-            denis.WinGame(artem, "Usually");
-            denis.LoseGame(artem, "Usually");
+            denis.WinGame(artem, usuallyGame);
+            denis.LoseGame(artem, usuallyGame);
             
-            denis.WinGame(artem, "OneRating");
-            denis.LoseGame(artem, "OneRating");
+            denis.WinGame(artem, oneRatingGame);
+            denis.LoseGame(artem, oneRatingGame);
             
-            sasha.WinGame(boris, "Train");
-            sasha.WinGame(boris, "Train");
-            sasha.WinGame(boris, "Train");
+            sasha.WinGame(boris, trainGame);
+            sasha.WinGame(boris, trainGame);
+            sasha.WinGame(boris, trainGame);
             
-            stas.WinGame(vlad,"Usually");
-            stas.LoseGame(vlad,"Usually");
+            ivan.WinGame(vlad,usuallyGame);
+            ivan.LoseGame(vlad,usuallyGame);
 
             CreateAccount createAccount = new CreateAccount(); 
             BonusAccount player1 = createAccount.BonusAccount();
             GameAccount player2 = createAccount.GameAccount();
             HardAccount player3 = createAccount.HardAccount();
             
-            player1.WinGame(player2,"Usually");
-            player1.LoseGame(player2,"Usually");
+            player1.WinGame(player2,usuallyGame);
+            player1.LoseGame(player2,usuallyGame);
             
-            player2.LoseGame(player3, "Usually");
-            player2.LoseGame(player3, "OneRating");
+            player2.LoseGame(player3, usuallyGame);
+            player2.LoseGame(player3, oneRatingGame);
 
             Account.HistoryGames();
             
@@ -45,7 +49,7 @@ namespace oopLr2
             Console.WriteLine(artem.CurrentRating);
             Console.WriteLine(sasha.CurrentRating);
             Console.WriteLine(boris.CurrentRating);
-            Console.WriteLine(stas.CurrentRating);
+            Console.WriteLine(ivan.CurrentRating);
             Console.WriteLine(vlad.CurrentRating);
         }
     }

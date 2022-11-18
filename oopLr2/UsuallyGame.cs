@@ -4,36 +4,23 @@
     {
         public UsuallyGame()
         {
-            TipeGames = "Usually";
-            Rating = Random.Next(90, 110);
+            Type = TypeGame.Usually.ToString();
         }
-
-        public override void Game(Account account1, Account account2, string result)
+        public override int Game(Account account1, Account account2, Result result)
         {
-            if (result.Equals("Win"))
+            int rating = Random.Next(90, 110);
+            if (result == Result.Win)
             {
-                account1.CurrentRating += Rating;
-                if (account2.Level.Equals("Usually")  ||  account2.Level.Equals("Easy"))
-                {
-                    account2.CurrentRating -= Rating;
-                }
-                else
-                {
-                    account2.CurrentRating -= 2*Rating;
-                }
+                account1.CurrentRating += rating;
+                account2.CurrentRating -= account2.RatingCoefficient*rating;
             }
             else
             {
-                account2.CurrentRating += Rating;
-                if (account1.Level.Equals("Usually")  ||  account1.Level.Equals("Easy"))
-                {
-                    account1.CurrentRating -= Rating;
-                }
-                else
-                {
-                    account1.CurrentRating -= 2*Rating;
-                }
+                account2.CurrentRating += rating;
+                account1.CurrentRating -= account2.RatingCoefficient*rating;
             }
+
+            return rating;
         }
     }
 }
